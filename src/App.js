@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+  //<img src={logo} className="App-logo" alt="logo" />
+  return (
+    <div>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p>You clicked {'{ ' + count + ' }'} times</p>
+          <button
+            onClick={() => setCount(count + 1)}
+            style={{ width: '500px', height: '50px', fontSize: '20px' }}
           >
-            Learn React
-          </a>
+            Click me
+          </button>
+
+          <div>
+            <h1>Jsx example => {'{ }'} </h1>
+          </div>
         </header>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default App;
